@@ -61,7 +61,7 @@ export default function Stake() {
 
     return (
         <Card p={5} mt={10}>
-            <Heading>Earn Reward Token</Heading>
+            <Heading color={'#F33A08'} backgroundColor={'#ECE8E7'} borderRadius={10} textAlign={"center"} >Stake $ONE, Earn $LUFFY!</Heading>
             <SimpleGrid columns={2}>
                 <Card p={5} m={5}>
                     <Box textAlign={"center"} mb={5}>
