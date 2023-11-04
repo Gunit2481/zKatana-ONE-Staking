@@ -1,5 +1,5 @@
 import type { AppProps } from "next/app";
-import { ThirdwebProvider } from "@thirdweb-dev/react";
+import { ThirdwebProvider, metamaskWallet, walletConnect, safeWallet, lightTheme, } from "@thirdweb-dev/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Zkatana } from "@thirdweb-dev/chains";
 import Navbar from "../components/Navbar";
@@ -12,7 +12,17 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThirdwebProvider
       clientId={process.env.NEXT_PUBLIC_TEMPLATE_CLIENT_ID}
-      activeChain={Zkatana}>
+      activeChain={Zkatana}
+      supportedWallets={[
+        metamaskWallet({ recommended: true }),
+        walletConnect({ recommended: true }),
+        safeWallet({
+          personalWallets: [
+            metamaskWallet({ recommended: true }),
+            walletConnect({ recommended: true }),
+          ],
+        }),
+      ]}>
       <ChakraProvider>
         <Navbar />
         <Component {...pageProps} />
